@@ -8,9 +8,11 @@ const {
   updatePendaki,
   deletePendaki,
   uploadFotoPendaki,
+  getJumlahPendaki,
 } = require("../controllers/pendakiControllers");
 
 // Routes
+router.route("/jumlah").get(getJumlahPendaki);
 router.route("/").get(getPendakis);
 router.route("/").post(createPendaki);
 router.route("/:id").get(getPendaki);

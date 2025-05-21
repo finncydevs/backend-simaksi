@@ -131,6 +131,15 @@ const deletePendaki = asyncHandler(async (req, res) => {
     .json({ message: `Pendaki dengan ID ${req.params.id} dihapus` });
 });
 
+const getJumlahPendaki = async (req, res) => {
+  try {
+    const jumlah = await Pendaki.countDocuments();
+    res.json({ jumlah });
+  } catch (err) {
+    res.status(500).json({ error: "Gagal menghitung pendaki" });
+  }
+};
+
 module.exports = {
   getPendakis,
   createPendaki,
@@ -138,4 +147,5 @@ module.exports = {
   updatePendaki,
   deletePendaki,
   uploadFotoPendaki,
+  getJumlahPendaki,
 };
